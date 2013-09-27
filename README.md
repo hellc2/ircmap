@@ -4,6 +4,7 @@ IrcMapC2 es un proyecto OpenSource (C&oacute;digo Abierto) gratuito y de libre d
 la licencia GPL que permite visualizar una estructura de red de una manera totalmente 
 visual en cualquier Web.<br />
 <br>
+<div style="text-align: center;">
                 <applet code="IrcMapC2.class" width=400 height=400>
 		<param name=leafs value="
 hub1-nodo11*9,
@@ -24,17 +25,11 @@ hub3-300x100">
                   <param name=image_leafs value="leafs.gif">
                  <img src="nojava.gif"  alt="TU NAVEGADOR NO TIENE SOPORTE JAVA">
                 </applet>
-                <strong><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif">Ejemplo 
-                del IrcMap C2 v.2.0. en funcionamiento.</font></strong></div></td>
-          </tr>
-        </table></td>
-    </tr>
-  </table>
-
+                <br />
+                <strong>Ejemplo del IrcMap C2 v.2.0. en funcionamiento.</strong>
 </div>
 <hr>
 <h2>Historial</h2>
-	<p>
 	    Tras la creaci&oacute;n de la red de irc <strong>IRC.CONECTADOS.ORG</strong>, se nos ocurri&oacute; 
 	    preparar una p&aacute;gina web que diese a conocer dicha red y mostrase
 	    las estad&iacute;sticas de uso, canales creados, velocidades, tr&aacute;fico,
@@ -42,7 +37,7 @@ hub3-300x100">
 	    en la web del irc-hispano y que vimos que ser&iacute;a una manera facil
 	    y sencilla de dar a conocer los distintos servidores, as&iacute; como
 	    informar a los usuarios de la red, sobre qu&eacute; servidores est&aacute;n
-	    menos sobrecargados o cuales ofrecen una conexi&oacute;n mejor.</p>
+	    menos sobrecargados o cuales ofrecen una conexi&oacute;n mejor.
      
 	<p> Con motivo de aprender a crear un Applet Java nos propusimos un peque&ntilde;o reto, 
 	    crear un applet que muestre la red y aunque, partiendo de cero era bastante
