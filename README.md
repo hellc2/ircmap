@@ -22,70 +22,34 @@ hub2-100x100,
 hub3-300x100">
                   <param name=image_hubs value="hubs.gif">
                   <param name=image_leafs value="leafs.gif">
-                  alt="TU NAVEGADOR NO TIENE SOPORTE JAVA."<img src=nojava.gif> 
+                 <img src="nojava.gif"  alt="TU NAVEGADOR NO TIENE SOPORTE JAVA">
                 </applet>
                 <strong><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif">Ejemplo 
-                del IrcMapC2 v.2.0. en funcionamiento.</font></strong></div></td>
+                del IrcMap C2 v.2.0. en funcionamiento.</font></strong></div></td>
           </tr>
         </table></td>
     </tr>
   </table>
-  
+
 </div>
 <hr>
-<table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td><p>&nbsp;</p>
-      <table width="129" border="0" bgcolor="#000000">
-        <tr> 
-          <td width="123"><strong><font size="4" face="Verdana, Arial, Helvetica, sans-serif"> 
-            <font color="#FFFFFF"><a name="historial"></a>HISTORIAL</font></font></strong></td>
-        </tr>
-      </table> 
-      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Tras la creaci&oacute;n 
-        de la red de irc <strong>IRC.CONECTADOS.ORG</strong>, se nos ocurri&oacute; 
-        preparar una p&aacute;gina web que diese a conocer dicha red y mostrase 
-        las estad&iacute;sticas de uso, canales creados, velocidades, tr&aacute;fico, 
-        etc. Una de las ideas que nos gust&oacute; fue el mapa de red que encontramos 
-        en la web del irc-hispano y que vimos que ser&iacute;a una manera facil 
-        y sencilla de dar a conocer los distintos servidores, as&iacute; como 
-        informar a los usuarios de la red, sobre qu&eacute; servidores est&aacute;n 
-        menos sobrecargados o cuales ofrecen una conexi&oacute;n mejor.</font></p>
-      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Con motivo 
-        de aprender a crear un Applet Java nos propusimos un peque&ntilde;o reto, 
-        crear un applet que muestre la red y aunque, partiendo de cero era bastante 
-        dificil, poco a poco nos ha ido sirviendo para aprender a hacer ciertas 
-        cosillas e implementar algunas nuevas rutinas muy interesantes. :D</font></p>
-      <p>&nbsp;</p><table width="129" border="0" bgcolor="#000000">
-        <tr> 
-          <td width="123"><strong><font size="4" face="Verdana, Arial, Helvetica, sans-serif"> 
-            <font color="#FFFFFF"><a name="sugerencias" id="sugerencias"></a>SUGERENCIAS</font></font></strong></td>
-        </tr>
-      </table>
-      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">- Hacer que 
-        el nodo &quot;leaf&quot; quede pegado al rat&oacute;n cuando tenemos el 
-        boton pulsado.<br>
-        - Configurar el n&uacute;mero m&aacute;ximo de nodos desde par&aacute;metros.</font> 
-        <br>
-        <font size="2" face="Verdana, Arial, Helvetica, sans-serif">- Crear nombres 
-        especiales para otros tipos de nodos (con gr&aacute;ficos diferenciados)<br>
-        - Introducir &quot;Colores&quot; y &quot;Medidas&quot; por par&aacute;metros 
-        en la web.<br>
-        - Crear un &quot;Constructor de diagramas&quot; que permita, de manera 
-        m&aacute;s sencilla crear los par&aacute;metros seg&uacute;n unos datos 
-        de entradas.<br>
-        - A&ntilde;adir soporte de &quot;LINK&quot; a determinados nodos como 
-        si fueran enlaces web.<br>
-        - Crear alg&uacute;n tipo de &quot;fondo&quot; ya sea una imagen est&aacute;tica 
-        (o GIF Animado) o bien algun efecto java interesante.</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br>
-        - Hacer este mismo applet en 3D.</font></p>
-      <table width="129" border="0" bgcolor="#000000">
-        <tr> 
-          <td width="123"><strong><font size="4" face="Verdana, Arial, Helvetica, sans-serif"> 
-            <font color="#FFFFFF"><a name="cambios"></a>CAMBIOS</font></font></strong></td>
-        </tr>
-      </table>
-      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>4 
+<h2>Historial</h2>
+	<p>
+	    Tras la creaci&oacute;n de la red de irc <strong>IRC.CONECTADOS.ORG</strong>, se nos ocurri&oacute; 
+	    preparar una p&aacute;gina web que diese a conocer dicha red y mostrase
+	    las estad&iacute;sticas de uso, canales creados, velocidades, tr&aacute;fico,
+	    etc. Una de las ideas que nos gust&oacute; fue el mapa de red que encontramos
+	    en la web del irc-hispano y que vimos que ser&iacute;a una manera facil
+	    y sencilla de dar a conocer los distintos servidores, as&iacute; como
+	    informar a los usuarios de la red, sobre qu&eacute; servidores est&aacute;n
+	    menos sobrecargados o cuales ofrecen una conexi&oacute;n mejor.</p>
+     
+	<p> Con motivo de aprender a crear un Applet Java nos propusimos un peque&ntilde;o reto, 
+	    crear un applet que muestre la red y aunque, partiendo de cero era bastante
+	    dificil, poco a poco nos ha ido sirviendo para aprender a hacer ciertas
+	    cosillas e implementar algunas nuevas rutinas muy interesantes. :D</p>
+     
+<h2>Cambios</h2>
         - Mayo - 2003</strong>: (<strong>Versi&oacute;n 2.0</strong>)<br>
         Creada una segunda versi&oacute;n del Applet, esta vez partiendo completamente 
         de cero aunque con la misma idea que la primera versi&oacute;n: creando 
@@ -102,49 +66,11 @@ hub3-300x100">
         JPG.<br>
         - Cambiada la velocidad de <em>Refresh</em> para ver el movimiento de 
         los nodos y las lineas de conexi&oacute;n con una velocidad &quot;m&aacute;s 
-        aceptable&quot;.</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br>
-        </font></p>
-      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>10 
+        aceptable&quot;.</p>
         - Abril - 2003</strong>: (<strong>Versi&oacute;n 1.0, 1.1</strong>)<br>
         Creada la primera versi&oacute;n del Applet basada en el ejemplo del Java 
         SDK &quot;Graph-Layout&quot; en la que se le implement&oacute; el soporte 
         de gr&aacute;ficos en lugar de recuadros y poco m&aacute;s. Solo permite 
         un &uacute;nico nodo <strong>hub</strong> pero sigue siendo lento y tarda 
-        demasiado en cargar en cualquier navegador.</font></p>
+        demasiado en cargar en cualquier navegador.</p>
       <p>&nbsp;</p>
-      <table width="129" border="0" bgcolor="#000000">
-        <tr> 
-          <td width="123"><strong><font size="4" face="Verdana, Arial, Helvetica, sans-serif"> 
-            <font color="#FFFFFF"><a name="download"></a>DOWNLOAD</font></font></strong></td>
-        </tr>
-      </table>
-      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Si te interesa 
-        este applet, tan solo tienes que registrarte que servir&aacute; para tener 
-        una estad&iacute;stica aproximada de las personas que est&aacute;n interesadas 
-        en este proyecto, recibir noticias sobre actualizaciones, participar en 
-        el foro o bien sugerir nuevas ideas.</font></p>
-      <p align="center"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong><a href="download.php">Pulsa 
-        aqu&iacute; para registrarte y bajarte el IrcMap</a></strong></font></p>
-      <br>
-      <table width="129" border="0" bgcolor="#000000">
-        <tr> 
-          <td width="123"><strong><font size="4" face="Verdana, Arial, Helvetica, sans-serif"> 
-            <font color="#FFFFFF"><a name="foro"></a>FORO</font></font></strong></td>
-        </tr>
-      </table>
-      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">- EN CONSTRUCCI&Oacute;N 
-        - </font></p>
-      <table width="129" border="0" bgcolor="#000000">
-        <tr> 
-          <td width="123"><strong><font size="4" face="Verdana, Arial, Helvetica, sans-serif"> 
-            <font color="#FFFFFF"><a name="contactar"></a>CONTACTAR</font></font></strong></td>
-        </tr>
-      </table>
-      <p align="left"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
-        Puedes enviar un E-Mail a: <a href="mailto:hell@conectados.org?subject=%5BIRCMAPC2%5D:"><strong>hell@conectados.org</strong></a></font></p>
-      </td>
-  </tr>
-</table>
-<font size="2" face="Verdana, Arial, Helvetica, sans-serif"></font> 
-</body>
-</html>
