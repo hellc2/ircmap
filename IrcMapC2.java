@@ -10,11 +10,11 @@ import java.net.URL.*;
 
 class Node {			// Clase Nodo general.
     double x;
-    double y;			// posición (x,y) del applet
+    double y;			// posicion (x,y) del applet
 
-    double dx;			// ni idea (¿?}:-.
+    double dx;
     double dy;
-    boolean fixed;		// Está fijo, o no... ?
+    boolean fixed;		// fijo, o no... ?
 
 	Image imagen;		// Tipo de imagen a mostrar.
 	
@@ -22,7 +22,7 @@ class Node {			// Clase Nodo general.
 }
 
 
-class Edge {			// Clase Linea de unión entre nodos
+class Edge {			// Clase Linea de union entre nodos
     int from;
     int to;
 
@@ -37,7 +37,7 @@ class GraphPanel extends Panel
     int nnodes;
     Node nodes[] = new Node[20];	// Numero maximo de nodos
 
-	
+
 
     int nedges;
     Edge edges[] = new Edge[40];	// Numero maximo de conexiones
@@ -83,7 +83,7 @@ class GraphPanel extends Panel
 
 
 	/***
-	 * Metodo para pintar un pixel en una posición X,Y del Applet
+	 * Metodo para pintar un pixel en una posicion X,Y del Applet
 	 ***/
 	public void pintarPixel(Graphics g, int x, int y, Color colorpx){
 		g.setColor(colorpx);
@@ -110,7 +110,7 @@ class GraphPanel extends Panel
 
 
     public void run() {
-        Thread me = Thread.currentThread();				
+        Thread me = Thread.currentThread();
 		while (relaxer == me) {
 		    relax();
 	    	if (random && (Math.random() < 0.03)) {
@@ -236,7 +236,7 @@ class GraphPanel extends Panel
 	
 	// AQUI VAMOS A IMPRIMIR EL GRAFICO DE CADA NODO.
 	if (n.fixed){
-		g.drawImage(n.imagen,x-(n.imagen.getHeight(this)/2),y-(n.imagen.getWidth(this)/2),this);		
+		g.drawImage(n.imagen,x-(n.imagen.getHeight(this)/2),y-(n.imagen.getWidth(this)/2),this);
 	}else{
 		Image imagen = graph.getImage(graph.getCodeBase(),"leafs.gif");
 		g.drawImage(imagen,x-(imagen.getHeight(this)/2),y-(imagen.getWidth(this)/2),this);
@@ -353,7 +353,7 @@ class GraphPanel extends Panel
 		for (int i = 0 ; i < nnodes ; i++) {
 		    Node n = nodes[i];
 		    double dist = (n.x - x) * (n.x - x) + (n.y - y) * (n.y - y);
-	    	if (dist < bestdist) {
+	    	if (dist < bestdist)
 				pick = n;
 				bestdist = dist;
 		    }
@@ -376,7 +376,7 @@ class GraphPanel extends Panel
         }
 
 		pick.x = e.getX();
-		pick.y = e.getY();		// Inicialmente vacío
+		pick.y = e.getY();		// Inicialmente vacio
 
 		repaint();
 		e.consume();
@@ -397,7 +397,7 @@ class GraphPanel extends Panel
     
     public void mouseDown(MouseEvent e) {
    		pick.x = e.getX();
-		pick.y = e.getY();		// Inicialmente vacío
+		pick.y = e.getY();		// Inicialmente vacio
 		repaint();	
 		e.consume();
     }
@@ -430,7 +430,7 @@ public class IrcMapC2 extends Applet implements ActionListener, ItemListener {
     public void init() {
 		setLayout(new BorderLayout());
 	
-		Dimension d = getSize();		// Capturamos el tamaño del applet.
+		Dimension d = getSize();		// Capturamos el tamaÃ±o del applet.
 		
 		panel = new GraphPanel(this);
 		panel.setBackground(Color.BLACK);
@@ -454,9 +454,9 @@ public class IrcMapC2 extends Applet implements ActionListener, ItemListener {
 	//controlPanel.add(shake);
 	//controlPanel.add(stress);
 	//controlPanel.add(random);
- 
-		 		
- 
+
+
+
  
  
 		// RECOJEMOS LOS DATOS DE LAS CONEXIONES...
@@ -522,7 +522,7 @@ public class IrcMapC2 extends Applet implements ActionListener, ItemListener {
 			n.x = posx;
 			n.y = posy;
 			n.imagen = getImage(getCodeBase(),"hubs.gif");	// La imagen! ;D
-	    	n.fixed = true;		// Es un HUB!!! Qué le vamos a hacer!!! :D
+	    	n.fixed = true;		// Es un HUB!!! Que le vamos a hacer!!! :D
 
 
 		}
@@ -553,13 +553,13 @@ public class IrcMapC2 extends Applet implements ActionListener, ItemListener {
 
 
     public String getAppletInfo() {
-		return "Titulo: IrcMapC2 v.2.0. \nAutor: Elio Rojano <hell@conectados.org>";
+		return "Titulo: IrcMapC2 v.2.0. \nAutor: Elio Rojano <erojano@sinologic.net>";
     }
 
     public String[][] getParameterInfo() {
 		String[][] info = {
 		    {"leafs", "nodos", "Lista de conexiones de nodos separados SOLO por comas de la siguiente forma: nodo1-nodo2/distancia*ping  Ej: WEB-IRC/100*3,WEB-CVS/120*7,WEB-PARTY*2,PARTY-2000*4,...  "},
-		    {"hubs", "servidores", "Lista de nodos centrales con su posición en dentro del applet de la forma: <nodo>-<posx>x<posy>  Ej: WEB-100x150,PARTY-200x100,... "}
+		    {"hubs", "servidores", "Lista de nodos centrales con su posicion en dentro del applet de la forma: <nodo>-<posx>x<posy>  Ej: WEB-100x150,PARTY-200x100,... "}
 		};
 		return info;
     }
