@@ -23,7 +23,7 @@ hub2-100x100,
 hub3-300x100">
 	<param name=image_hubs value="hubs.gif">
 	<param name=image_leafs value="leafs.gif">
-	<img src="nojava.gif"  alt="TU NAVEGADOR NO TIENE SOPORTE JAVA">
+	<img src="ircmapc2.png"  alt="TU NAVEGADOR NO TIENE SOPORTE JAVA">
     </applet>
     <br />
     <strong>Ejemplo del IrcMap C2 v.2.0. en funcionamiento.</strong>
