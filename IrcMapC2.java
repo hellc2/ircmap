@@ -16,9 +16,9 @@ class Node {			// Clase Nodo general.
     double dy;
     boolean fixed;		// fijo, o no... ?
 
-	Image imagen;		// Tipo de imagen a mostrar.
-	
-	String lbl;			// Etiqueta del nodo
+    Image imagen;		// Tipo de imagen a mostrar.
+
+    String lbl;			// Etiqueta del nodo
 }
 
 
@@ -27,7 +27,7 @@ class Edge {			// Clase Linea de union entre nodos
     int to;
 
     double len;
-	int col;			// Color por defecto de la conexion
+    int col;			// Color por defecto de la conexion
 }
 
 
@@ -47,161 +47,150 @@ class GraphPanel extends Panel
     boolean random;
 
     GraphPanel(IrcMapC2 graph) {
-	this.graph = graph;
-	addMouseListener(this);
+      this.graph = graph;
+      addMouseListener(this);
     }
 
     int findNode(String lbl) {
-	for (int i = 0 ; i < nnodes ; i++) {
-	    if (nodes[i].lbl.equals(lbl)) {
-		return i;
-	    }
-	}
-	return addNode(lbl);
+        for (int i = 0 ; i < nnodes ; i++) {
+            if (nodes[i].lbl.equals(lbl)) {
+              return i;
+            }
+        }
+        return addNode(lbl);
     }
 
 
 
     int addNode(String lbl) {
-	Node n = new Node();
-	n.x = 10 + 380*Math.random();
-	n.y = 10 + 380*Math.random();
-	n.lbl = lbl;
-	nodes[nnodes] = n;
-	return nnodes++;
+      Node n = new Node();
+      n.x = 10 + 380*Math.random();
+      n.y = 10 + 380*Math.random();
+      n.lbl = lbl;
+      nodes[nnodes] = n;
+      return nnodes++;
     }
 
 
     void addEdge(String from, String to, int len, int col) {
-	Edge e = new Edge();
-	e.from = findNode(from);
-	e.to = findNode(to);
-	e.len = len;
-	e.col = col;
-	edges[nedges++] = e;
+      Edge e = new Edge();
+      e.from = findNode(from);
+      e.to = findNode(to);
+      e.len = len;
+      e.col = col;
+      edges[nedges++] = e;
     }
 
+    /***
+      * Metodo para pintar un pixel en una posicion X,Y del Applet
+     ***/
+    public void pintarPixel(Graphics g, int x, int y, Color colorpx){
+      g.setColor(colorpx);
+      g.drawRect(x,y,1,3);
+    }
 
-	/***
-	 * Metodo para pintar un pixel en una posicion X,Y del Applet
-	 ***/
-	public void pintarPixel(Graphics g, int x, int y, Color colorpx){
-		g.setColor(colorpx);
-		g.drawRect(x,y,1,3);
-	}
+    public void pintarLeyenda(Graphics g, Applet p){
+    }
 
+    public void pintarCampo(Graphics g){
+      Random numeroaleatorio = new Random();
+      for (int i=0; i <= 10; i++){
+        int posx = numeroaleatorio.nextInt(200);
+        int posy = numeroaleatorio.nextInt(200);
+        int col = numeroaleatorio.nextInt(200);
+        Color starcolor = new Color(col,col,col);
 
-	public void pintarLeyenda(Graphics g, Applet p){
-
-	}
-
-	public void pintarCampo(Graphics g){
-		Random numeroaleatorio = new Random();
-		for (int i=0; i <= 10; i++){
-			int posx = numeroaleatorio.nextInt(200);
-			int posy = numeroaleatorio.nextInt(200);
-			int col = numeroaleatorio.nextInt(200);
-			
-			Color starcolor = new Color(col,col,col);
-			
-			pintarPixel(g,posx,posy,starcolor);
-		}
-	}
-
+        pintarPixel(g,posx,posy,starcolor);
+      }
+    }
 
     public void run() {
-        Thread me = Thread.currentThread();
-		while (relaxer == me) {
-		    relax();
-	    	if (random && (Math.random() < 0.03)) {
-				Node n = nodes[(int)(Math.random() * nnodes)];
-				if (!n.fixed) {
-				    n.x += 100*Math.random() - 50;
-				    n.y += 100*Math.random() - 50;
-				}
-	    	}
-	    	try {
-				Thread.sleep(50);
-	    	} catch (InterruptedException e) {
-				break;
-	    	}
-		}
+      Thread me = Thread.currentThread();
+      while (relaxer == me) {
+        relax();
+        if (random && (Math.random() < 0.03)) {
+          Node n = nodes[(int)(Math.random() * nnodes)];
+          if (!n.fixed) {
+            n.x += 100*Math.random() - 50;
+            n.y += 100*Math.random() - 50;
+          }
+        }
+        try {
+          Thread.sleep(50);
+        } catch (InterruptedException e) {
+          break;
+        }
+      }
     }
-
-
 
     synchronized void relax() {
-    	
-		for (int i = 0 ; i < nedges ; i++) {
-	    	Edge e = edges[i];
-	    	double vx = nodes[e.to].x - nodes[e.from].x;
-	    	double vy = nodes[e.to].y - nodes[e.from].y;
-	    	double len = Math.sqrt(vx * vx + vy * vy);
-            len = (len == 0) ? .0001 : len;
-		    double f = (edges[i].len - len) / (len * 3);
-	    	double dx = f * vx;
-		    double dy = f * vy;
-
-		    nodes[e.to].dx += dx;
-		    nodes[e.to].dy += dy;
-	    	nodes[e.from].dx += -dx;
-	    	nodes[e.from].dy += -dy;
-		}
-
-		for (int i = 0 ; i < nnodes ; i++) {
-	    	Node n1 = nodes[i];
-	    	double dx = 0;
-	    	double dy = 0;
-
-		    for (int j = 0 ; j < nnodes ; j++) {
-				if (i == j) {
-		    	continue;
-			}
-			Node n2 = nodes[j];
-			double vx = n1.x - n2.x;
-			double vy = n1.y - n2.y;
-			double len = vx * vx + vy * vy;
-			if (len == 0) {
-		    	dx += Math.random();
-		    	dy += Math.random();
-			} else if (len < 100*100) {
-			    dx += vx / len;
-		    	dy += vy / len;
-			}
-	    }
-	    double dlen = dx * dx + dy * dy;
-	    if (dlen > 0) {
-			dlen = Math.sqrt(dlen) / 2;
-			n1.dx += dx / dlen;
-			n1.dy += dy / dlen;
-	    }
-	}
-
-	Dimension d = getSize();
-	for (int i = 0 ; i < nnodes ; i++) {
-	    Node n = nodes[i];
-	    if (!n.fixed) {
-			n.x += Math.max(-5, Math.min(5, n.dx));
-			n.y += Math.max(-5, Math.min(5, n.dy));
+      for (int i = 0 ; i < nedges ; i++) {
+        Edge e = edges[i];
+        double vx = nodes[e.to].x - nodes[e.from].x;
+        double vy = nodes[e.to].y - nodes[e.from].y;
+        double len = Math.sqrt(vx * vx + vy * vy);
+        len = (len == 0) ? .0001 : len;
+        double f = (edges[i].len - len) / (len * 3);
+        double dx = f * vx;
+        double dy = f * vy;
+        nodes[e.to].dx += dx;
+        nodes[e.to].dy += dy;
+        nodes[e.from].dx += -dx;
+        nodes[e.from].dy += -dy;
+      }
+      for (int i = 0 ; i < nnodes ; i++) {
+        Node n1 = nodes[i];
+        double dx = 0;
+        double dy = 0;
+        for (int j = 0 ; j < nnodes ; j++) {
+          if (i == j) {
+            continue;
+          }
+          Node n2 = nodes[j];
+          double vx = n1.x - n2.x;
+          double vy = n1.y - n2.y;
+          double len = vx * vx + vy * vy;
+          if (len == 0) {
+            dx += Math.random();
+            dy += Math.random();
+          } else if (len < 100*100) {
+            dx += vx / len;
+            dy += vy / len;
+          }
         }
-            if (n.x < 0) {
-                n.x = 0;
-            } else if (n.x > d.width) {
-                n.x = d.width;
-            }
-            if (n.y < 0) {
-                n.y = 0;
-            } else if (n.y > d.height) {
-                n.y = d.height;
-            }
-	    n.dx /= 2;
-	    n.dy /= 2;
-	}
-	repaint();
+        double dlen = dx * dx + dy * dy;
+        if (dlen > 0) {
+          dlen = Math.sqrt(dlen) / 2;
+          n1.dx += dx / dlen;
+          n1.dy += dy / dlen;
+        }
+      }
+
+      Dimension d = getSize();
+      for (int i = 0 ; i < nnodes ; i++) {
+        Node n = nodes[i];
+        if (!n.fixed) {
+          n.x += Math.max(-5, Math.min(5, n.dx));
+          n.y += Math.max(-5, Math.min(5, n.dy));
+        }
+        if (n.x < 0) {
+          n.x = 0;
+        } else if (n.x > d.width) {
+          n.x = d.width;
+        }
+        if (n.y < 0) {
+          n.y = 0;
+        } else if (n.y > d.height) {
+          n.y = d.height;
+        }
+        n.dx /= 2;
+        n.dy /= 2;
+      }
+      repaint();
     }
 
-    Node pick;
-    boolean pickfixed;
+    static Node pick;
+    static boolean pickfixed;
     Image offscreen;
     Dimension offscreensize;
     Graphics offgraphics;
@@ -214,14 +203,13 @@ class GraphPanel extends Panel
     final Color arcColor1 = Color.gray;
     final Color arcColor2 = Color.pink;
     final Color arcColor3 = Color.red;
-	    
-	final Color lag0	= new Color(255,255,255); 	// Verde Clarito :) SIN LAG.
-	final Color lag1	= new Color(0,255,0);		// Verde Normal :D LAG NORMAL.
-    final Color lag2	= new Color(255,255,0);		// Amarillo
-    final Color lag3	= new Color(255,190,0);		// Naranja
-    final Color lag4	= new Color(255,0,0);		// Rojo
-    final Color lag5	= new Color(190,0,255);		// Violeta oscuro.
-   
+
+    final Color lag0 = new Color(255,255,255); 	// Verde Clarito :) SIN LAG.
+    final Color lag1 = new Color(0,255,0);		// Verde Normal :D LAG NORMAL.
+    final Color lag2 = new Color(255,255,0);		// Amarillo
+    final Color lag3 = new Color(255,190,0);		// Naranja
+    final Color lag4 = new Color(255,0,0);		// Rojo
+    final Color lag5 = new Color(190,0,255);		// Violeta oscuro.
 
 
 
@@ -353,7 +341,7 @@ class GraphPanel extends Panel
 		for (int i = 0 ; i < nnodes ; i++) {
 		    Node n = nodes[i];
 		    double dist = (n.x - x) * (n.x - x) + (n.y - y) * (n.y - y);
-	    	if (dist < bestdist)
+	    	if (dist < bestdist){
 				pick = n;
 				bestdist = dist;
 		    }
